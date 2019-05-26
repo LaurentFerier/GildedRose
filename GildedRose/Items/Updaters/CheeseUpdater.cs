@@ -8,7 +8,7 @@
         /// <param name="item"></param>
         public override void UpdateItem(Item item)
         {
-            if (item.SellIn > 0 )
+            if (item.SellIn > 0)
             {
                 // [R4.5]
                 UpdateItemQuality(item, item.Quality + 1);

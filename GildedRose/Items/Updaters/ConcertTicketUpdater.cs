@@ -9,11 +9,11 @@
         public override void UpdateItem(Item item)
         {
             // [R4.6]
-            if ( item.SellIn > 10 )
+            if (item.SellIn > 10)
             {
                 UpdateItemQuality(item, item.Quality + 1);
             }
-            else if ( item.SellIn > 5 )
+            else if (item.SellIn > 5)
             {
                 UpdateItemQuality(item, item.Quality + 2);
             }

@@ -99,7 +99,7 @@ namespace GildedRose
             Assert.AreEqual(4, item.Quality);
             Assert.AreEqual(4, item.SellIn);
 
-            for (int i=0; i<100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Stock.UpdateQuality();
             }

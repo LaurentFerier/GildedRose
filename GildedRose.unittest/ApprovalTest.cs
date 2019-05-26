@@ -21,7 +21,7 @@ namespace GildedRose
             string output = fakeoutput.ToString();
 
             string[] outputLines = output.Replace("\r", "").Split('\n');
-            for(var i = 0; i<Math.Min(lines.Length, outputLines.Length); i++) 
+            for (var i = 0; i < Math.Min(lines.Length, outputLines.Length); i++)
             {
                 Assert.AreEqual(lines[i], outputLines[i]);
             }
