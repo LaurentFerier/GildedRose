@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using GildedRose.Items.Updaters;
+using System.Collections.Generic;
 using System.IO;
 
 namespace GildedRose.Items
@@ -11,14 +12,14 @@ namespace GildedRose.Items
         /// <summary>
         /// Holds the items stored in the stock
         /// </summary>
-        public IList<Item> Items { get; private set; }
+        public IList<KeyValuePair<Item, IItemUpdater>> Items { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public Stock()
         {
-            Items = new List<Item>();
+            Items = new List<KeyValuePair<Item, IItemUpdater>>();
         }
 
         /// <summary>
@@ -26,9 +27,9 @@ namespace GildedRose.Items
         /// </summary>
         /// <param name="new_item"></param>
         /// <returns>true if the item could be added in the stock</returns>
-        public bool AddItem(Item new_item)
+        public bool AddItem(Item new_item, IItemUpdater updater)
         {
-            Items.Add(new_item);
+            Items.Add(new KeyValuePair<Item, IItemUpdater>(new_item, updater));
 
             return true;
         }
@@ -40,8 +41,7 @@ namespace GildedRose.Items
         /// <returns></returns>
         public Item this[int i]
         {
-            get { return Items[i]; }
-            set { Items[i] = value; }
+            get { return Items[i].Key; }
         }
 
         /// <summary>
@@ -49,77 +49,9 @@ namespace GildedRose.Items
         /// </summary>
         public void UpdateQuality()
         {
-            foreach (Item item in Items)
+            foreach (KeyValuePair<Item, IItemUpdater> pair in Items)
             {
-                if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    if (item.Quality > 0)
-                    {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-
-                        if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (item.SellIn < 11)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-
-                            if (item.SellIn < 6)
-                            {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
-
-                if (item.SellIn < 0)
-                {
-                    if (item.Name != "Aged Brie")
-                    {
-                        if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (item.Quality > 0)
-                            {
-                                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            item.Quality = item.Quality - item.Quality;
-                        }
-                    }
-                    else
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-                }
+                pair.Value.UpdateItem(pair.Key);
             }
         }
 
@@ -130,9 +62,9 @@ namespace GildedRose.Items
         public void Dump(TextWriter writer)
         {
             writer.WriteLine("name, sellIn, quality");
-            foreach (Item item in Items)
+            foreach (KeyValuePair<Item, IItemUpdater> pair in Items)
             {
-                writer.WriteLine(item);
+                writer.WriteLine(pair.Key);
             }
             writer.WriteLine("");
         }
