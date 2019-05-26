@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using GildedRose.Items;
+using NUnit.Framework;
 
-namespace csharp
+namespace GildedRose
 {
     [TestFixture]
     public class GildedRoseTest
@@ -9,10 +9,10 @@ namespace csharp
         [Test]
         public void foo()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
-            Assert.AreEqual("foo", Items[0].Name);
+            Stock stock = new Stock();
+            stock.AddItem(new Item { Name = "foo", SellIn = 0, Quality = 0 });
+            stock.UpdateQuality();
+            Assert.AreEqual("foo", stock[0].Name);
         }
     }
 }

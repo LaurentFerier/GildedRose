@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose", "GildedRose\Gi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRose.unittest", "GildedRose.unittest\GildedRose.unittest.csproj", "{1DF363D6-B043-4EFF-9659-E1F2AD695A1D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1B96940-1503-444E-A459-3215B4B853A0}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		Requirements.md = Requirements.md
+		ThirtyDays.txt = ThirtyDays.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
