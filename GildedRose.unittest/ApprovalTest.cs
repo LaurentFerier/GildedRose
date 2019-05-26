@@ -20,7 +20,7 @@ namespace csharp
             Program.Main(new string[] { });
             String output = fakeoutput.ToString();
 
-            var outputLines = output.Split('\n');
+            var outputLines = output.Replace("\r", "").Split('\n');
             for(var i = 0; i<Math.Min(lines.Length, outputLines.Length); i++) 
             {
                 Assert.AreEqual(lines[i], outputLines[i]);
