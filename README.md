@@ -1,0 +1,2 @@
+# GildedRose
+GuildedRose Kata
