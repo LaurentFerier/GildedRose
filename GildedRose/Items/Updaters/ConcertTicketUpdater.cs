@@ -26,7 +26,7 @@
                 item.Quality = 0;
             }
 
-            item.SellIn = item.SellIn - 1;
+            base.UpdateItem(item);
         }
 
         /// <summary>

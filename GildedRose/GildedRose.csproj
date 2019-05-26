@@ -67,6 +67,7 @@
     <Compile Include="Items\Updaters\BaseUpdater.cs" />
     <Compile Include="Items\Updaters\CheeseUpdater.cs" />
     <Compile Include="Items\Updaters\ConcertTicketUpdater.cs" />
+    <Compile Include="Items\Updaters\ConjuredItemsUpdater.cs" />
     <Compile Include="Items\Updaters\DefaultUpdater.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Stock.cs" />

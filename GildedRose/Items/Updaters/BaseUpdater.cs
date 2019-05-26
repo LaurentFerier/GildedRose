@@ -11,7 +11,10 @@ namespace GildedRose.Items.Updaters
         /// Updates the item attributes
         /// </summary>
         /// <param name="item"></param>
-        public abstract void UpdateItem(Item item);
+        public virtual void UpdateItem(Item item)
+        {
+            item.SellIn = item.SellIn - 1;
+        }
 
         /// <summary>
         /// Updates the quality of the item with the provided value

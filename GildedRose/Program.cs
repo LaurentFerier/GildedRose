@@ -24,7 +24,7 @@ namespace GildedRose
             stock.AddItem(new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 }, ConcertTicketUpdater.Instance);
 
             // this conjured item does not work properly yet
-            stock.AddItem(new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }, DefaultUpdater.Instance);
+            stock.AddItem(new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }, ConjuredItemsUpdater.Instance);
 
             for (int i = 0; i < 31; i++)
             {

@@ -19,7 +19,7 @@
                 UpdateItemQuality(item, item.Quality + 2);
             }
 
-            item.SellIn = item.SellIn - 1;
+            base.UpdateItem(item);
         }
 
         /// <summary>

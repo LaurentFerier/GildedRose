@@ -162,5 +162,36 @@ namespace GildedRose
             Assert.AreEqual(-2, item.SellIn);
         }
 
+        /// <summary>
+        /// Tests the conjured item updater
+        /// </summary>
+        [Test]
+        public void TestConjuredItemsUpdater()
+        {
+            Item item = new Item { Name = "Conjured meatball", SellIn = 5, Quality = 17 };
+            Stock.AddItem(item, ConjuredItemsUpdater.Instance);
+            Stock.UpdateQuality();
+            // [R6]
+            Assert.AreEqual(15, item.Quality);
+            Assert.AreEqual(4, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(13, item.Quality);
+            Assert.AreEqual(3, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(11, item.Quality);
+            Assert.AreEqual(2, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(9, item.Quality);
+            Assert.AreEqual(1, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(7, item.Quality);
+            Assert.AreEqual(0, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(3, item.Quality);
+            Assert.AreEqual(-1, item.SellIn);
+            Stock.UpdateQuality();
+            Assert.AreEqual(0, item.Quality);
+            Assert.AreEqual(-2, item.SellIn);
+        }
     }
 }
