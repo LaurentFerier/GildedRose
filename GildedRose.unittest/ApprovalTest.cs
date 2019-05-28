@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using NUnit.Framework;
 
@@ -11,7 +12,9 @@ namespace GildedRose
         [Test]
         public void ThirtyDays()
         {
-            string[] lines = File.ReadAllLines("ThirtyDays.txt");
+            string dir = Assembly.GetExecutingAssembly().Location;
+            dir = Path.Combine(Path.Combine(Path.Combine(Path.GetDirectoryName(dir), ".."), ".."), "..");
+            string[] lines = File.ReadAllLines(dir + Path.DirectorySeparatorChar + "ThirtyDays.txt");
 
             StringBuilder fakeoutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeoutput));
